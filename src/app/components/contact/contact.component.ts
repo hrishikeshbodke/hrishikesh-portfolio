@@ -1,0 +1,427 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PortfolioDataService } from '../../core/services/portfolio-data.service';
+import { Profile, ContactForm } from '../../core/models/profile.model';
+import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/animations';
+
+@Component({
+  selector: 'app-contact',
+  imports: [CommonModule, FormsModule],
+  animations: [fadeInUp, slideInLeft, slideInRight],
+  template: `
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header" @fadeInUp>
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">Let's build something amazing together</p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-info" @slideInLeft>
+            <div class="info-card">
+              <h3>Contact Information</h3>
+              <p class="info-description">
+                Feel free to reach out for collaborations, opportunities, or just a friendly chat about technology and development.
+              </p>
+
+              <div class="info-items">
+                <div class="info-item">
+                  <div class="info-icon">📧</div>
+                  <div class="info-content">
+                    <h4>Email</h4>
+                    <a [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <div class="info-icon">🏢</div>
+                  <div class="info-content">
+                    <h4>Organization</h4>
+                    <p>{{ profile.organization }}</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <div class="info-icon">💼</div>
+                  <div class="info-content">
+                    <h4>LinkedIn</h4>
+                    <a [href]="profile.linkedin" target="_blank">Connect on LinkedIn</a>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <div class="info-icon">💻</div>
+                  <div class="info-content">
+                    <h4>GitHub</h4>
+                    <a [href]="profile.github" target="_blank">View GitHub Profile</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="availability">
+                <div class="status-indicator"></div>
+                <p>Available for freelance projects and consulting</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper" @slideInRight>
+            <form class="contact-form" (ngSubmit)="submitForm()" #contactFormRef="ngForm">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  [(ngModel)]="formData.name"
+                  required
+                  placeholder="Your full name"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  [(ngModel)]="formData.email"
+                  required
+                  email
+                  placeholder="your.email@example.com"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject"
+                  [(ngModel)]="formData.subject"
+                  required
+                  placeholder="What's this about?"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea 
+                  id="message" 
+                  name="message"
+                  [(ngModel)]="formData.message"
+                  required
+                  rows="6"
+                  placeholder="Tell me about your project or inquiry..."
+                  class="form-control"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="submit-btn"
+                [disabled]="!contactFormRef.form.valid || isSubmitting">
+                <span *ngIf="!isSubmitting">Send Message</span>
+                <span *ngIf="isSubmitting">Sending...</span>
+              </button>
+
+              <div class="form-message success" *ngIf="submitSuccess">
+                ✓ Message sent successfully! I'll get back to you soon.
+              </div>
+
+              <div class="form-message info">
+                Note: This is a demo form. In production, this would be connected to a backend API.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  `,
+  styles: [`
+    .contact {
+      padding: 6rem 2rem;
+      background: #0f172a;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #94a3b8;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      height: fit-content;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .info-card h3 {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .info-description {
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .info-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .info-content h4 {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .info-content p,
+    .info-content a {
+      color: white;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .info-content a {
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .info-content a:hover {
+      color: #3b82f6;
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 8px;
+      border-left: 4px solid #10b981;
+    }
+
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px #10b981; }
+      50% { opacity: 0.5; box-shadow: 0 0 20px #10b981; }
+    }
+
+    .availability p {
+      color: #6ee7b7;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .contact-form-wrapper {
+      background: rgba(30, 41, 59, 0.6);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      color: #cbd5e1;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-control {
+      padding: 0.875rem 1rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .form-control::placeholder {
+      color: #64748b;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .form-message.success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border: 1px solid #10b981;
+    }
+
+    .form-message.info {
+      background: rgba(59, 130, 246, 0.1);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact {
+        padding: 4rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .info-card,
+      .contact-form-wrapper {
+        padding: 1.75rem;
+      }
+    }
+  `]
+})
+export class ContactComponent implements OnInit {
+  profile!: Profile;
+  isSubmitting = false;
+  submitSuccess = false;
+  
+  formData: ContactForm = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+
+  constructor(private portfolioData: PortfolioDataService) {}
+
+  ngOnInit(): void {
+    this.profile = this.portfolioData.getProfile();
+  }
+
+  submitForm(): void {
+    this.isSubmitting = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Form submitted:', this.formData);
+      this.isSubmitting = false;
+      this.submitSuccess = true;
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        this.submitSuccess = false;
+        this.formData = {
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        };
+      }, 3000);
+    }, 1500);
+  }
+}
