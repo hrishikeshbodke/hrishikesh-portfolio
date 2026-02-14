@@ -31,7 +31,7 @@ Name: Hrishikesh Bodke
 Title: .NET + Angular Full-Stack Developer
 Experience: 3.4 Years
 Current Role: Project Engineer
-Organization: CDAC Pune – Ministry of Communication & Information Technology, 
+Organization: CDAC Pune – Ministry of Electronics and Information Technology, 
               Government of India
 
 TECHNICAL SKILLS (VERIFIED):
@@ -307,7 +307,7 @@ Features:
 Current Position Details:
 Title: Project Engineer
 Company: CDAC Pune
-Location: Ministry of Communication & Information Technology, Government of India
+Location: Ministry of Electronics and Information Technology, Government of India
 Duration: Nov 2022 - Present
 Project: PMGSY-OMMAS
 

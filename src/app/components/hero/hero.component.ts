@@ -69,7 +69,7 @@ import { fadeInUp, fadeInDown } from '../../core/animations/animations';
     <span class="keyword">public string</span> Role => <span class="string">"{{ profile.currentRole }}"</span>;
     <span class="keyword">public string[]</span> Skills => <span class="keyword">new</span>[]
     &#123;
-        <span class="string">".NET Core"</span>, <span class="string">"Angular"</span>, <span class="string">"SQL Server"</span>
+        <span class="string">".NET Core"</span>, <span class="string">".NET Framework"</span>, <span class="string">"Angular"</span>, <span class="string">"SQL Server"</span>
     &#125;;
     
     <span class="keyword">public void</span> <span class="method">BuildEnterpriseSolutions</span>()
@@ -390,7 +390,7 @@ import { fadeInUp, fadeInDown } from '../../core/animations/animations';
 export class HeroComponent implements OnInit {
   profile!: Profile;
 
-  constructor(private portfolioData: PortfolioDataService) {}
+  constructor(private portfolioData: PortfolioDataService) { }
 
   ngOnInit(): void {
     this.profile = this.portfolioData.getProfile();

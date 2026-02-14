@@ -26,7 +26,7 @@ import { fadeInUp, staggerFadeIn } from '../../core/animations/animations';
               <div class="skill-item" *ngFor="let skill of category.skills">
                 <div class="skill-info">
                   <span class="skill-name">{{ skill.name }}</span>
-                  <span class="skill-level">{{ skill.level }}%</span>
+                  <!-- <span class="skill-level">{{ skill.level }}%</span> -->
                 </div>
                 <div class="skill-bar">
                   <div class="skill-progress" [style.width.%]="skill.level"></div>

@@ -13,7 +13,7 @@ import { PortfolioDataService } from '../../core/services/portfolio-data.service
             <h3 class="footer-title">Hrishikesh Bodke</h3>
             <p class="footer-tagline">.NET + Angular Full-Stack Developer</p>
             <p class="footer-description">
-              Building secure, scalable enterprise applications for government-scale systems.
+              Building secure, scalable enterprise applications.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ import { PortfolioDataService } from '../../core/services/portfolio-data.service
             <h4>Technologies</h4>
             <ul class="footer-links">
               <li>.NET Core & C#</li>
-              <li>Angular & TypeScript</li>
+              <li>Angular</li>
               <li>SQL Server</li>
               <li>OpenLayers GIS</li>
               <li>Security & Encryption</li>
@@ -62,7 +62,7 @@ import { PortfolioDataService } from '../../core/services/portfolio-data.service
 
         <div class="footer-bottom">
           <p class="copyright">
-            © {{ currentYear }} Hrishikesh Bodke. Built with Angular 20 & TypeScript.
+            © {{ currentYear }} Hrishikesh Bodke. Built with Angular.
           </p>
           <p class="attribution">
             Designed & Developed with ❤️ for Enterprise Excellence

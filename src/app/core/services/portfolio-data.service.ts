@@ -10,14 +10,14 @@ export class PortfolioDataService {
     return {
       name: 'Hrishikesh Bodke',
       title: '.NET + Angular Full-Stack Developer',
-      experience: '3.4 Years',
+      experience: '3.4+ Years',
       currentRole: 'Project Engineer',
       organization: 'CDAC Pune',
-      location: 'Ministry of Communication & Information Technology, Government of India',
-      email: 'hrishikesh.bodke@cdac.in',
-      linkedin: 'https://linkedin.com/in/hrishikesh-bodke',
+      location: 'Ministry of Electronics and Information Technology, Government of India',
+      email: 'hrishikeshbodkeb@gmail.com',
+      linkedin: 'http://www.linkedin.com/in/hbodke-ab765a158',
       github: 'https://github.com/hrishikeshbodke',
-      summary: 'Experienced Full-Stack Developer specializing in building secure, scalable enterprise applications for government-scale systems. Proven expertise in .NET Core, Angular, and SQL Server with a strong focus on security, performance optimization, and GIS integration. Successfully delivered critical modules for national-level infrastructure monitoring systems serving multiple state governments.',
+      summary: 'Experienced Full-Stack Developer specializing in building secure, scalable enterprise applications. Proven expertise in .NET Core, .NET Framework, Angular, and SQL Server with a strong focus on security, performance optimization, and GIS integration. Successfully delivered critical modules for national-level infrastructure monitoring systems serving multiple state governments.',
     };
   }
 
@@ -27,64 +27,64 @@ export class PortfolioDataService {
         name: 'Backend Development',
         icon: '🔧',
         skills: [
-          { name: 'C# & .NET Core', level: 90, category: 'Backend' },
-          { name: 'ASP.NET MVC', level: 88, category: 'Backend' },
-          { name: 'Web API', level: 90, category: 'Backend' },
-          { name: 'Entity Framework', level: 85, category: 'Backend' },
-          { name: 'LINQ', level: 87, category: 'Backend' },
+          { name: 'C# & .NET Core', level: 100, category: 'Backend' },
+          { name: 'ASP.NET MVC', level: 100, category: 'Backend' },
+          { name: 'Web API', level: 100, category: 'Backend' },
+          { name: 'Entity Framework', level: 100, category: 'Backend' },
+          { name: 'LINQ', level: 100, category: 'Backend' },
         ]
       },
       {
         name: 'Frontend Development',
         icon: '🎨',
         skills: [
-          { name: 'Angular', level: 88, category: 'Frontend' },
-          { name: 'TypeScript', level: 85, category: 'Frontend' },
-          { name: 'JavaScript', level: 87, category: 'Frontend' },
-          { name: 'HTML5 & CSS3', level: 90, category: 'Frontend' },
-          { name: 'jQuery & AJAX', level: 82, category: 'Frontend' },
-          { name: 'Responsive Design', level: 88, category: 'Frontend' },
+          { name: 'Angular', level: 100, category: 'Frontend' },
+          // { name: 'TypeScript', level: 100, category: 'Frontend' },
+          { name: 'JavaScript', level: 100, category: 'Frontend' },
+          { name: 'HTML5 & CSS3', level: 100, category: 'Frontend' },
+          { name: 'jQuery & AJAX', level: 100, category: 'Frontend' },
+          { name: 'Responsive Design', level: 100, category: 'Frontend' },
         ]
       },
       {
         name: 'Database & Reporting',
         icon: '🗄️',
         skills: [
-          { name: 'SQL Server', level: 90, category: 'Database' },
-          { name: 'Stored Procedures', level: 88, category: 'Database' },
-          { name: 'Database Triggers', level: 85, category: 'Database' },
-          { name: 'SSRS', level: 80, category: 'Database' },
+          { name: 'SQL Server', level: 100, category: 'Database' },
+          { name: 'Stored Procedures', level: 100, category: 'Database' },
+          // { name: 'Database Triggers', level: 100, category: 'Database' },
+          { name: 'SSRS Reporting Services', level: 100, category: 'Database' },
         ]
       },
       {
         name: 'Security & Quality',
         icon: '🔒',
         skills: [
-          { name: 'AES + RSA Encryption', level: 85, category: 'Security' },
-          { name: 'Digital Signature', level: 82, category: 'Security' },
-          { name: 'JWT Authentication', level: 87, category: 'Security' },
-          { name: 'SonarQube', level: 80, category: 'Security' },
+          { name: 'AES + RSA Encryption', level: 100, category: 'Security' },
+          { name: 'Digital Signature', level: 100, category: 'Security' },
+          { name: 'JWT Authentication', level: 100, category: 'Security' },
+          { name: 'SonarQube', level: 100, category: 'Security' },
         ]
       },
       {
         name: 'GIS & Visualization',
         icon: '🗺️',
         skills: [
-          { name: 'OpenLayers', level: 85, category: 'GIS' },
-          { name: 'WMS Layers', level: 82, category: 'GIS' },
-          { name: 'KML & Maps', level: 80, category: 'GIS' },
-          { name: 'Highcharts.js', level: 78, category: 'GIS' },
-          { name: 'jqGrid', level: 80, category: 'GIS' },
+          { name: 'OpenLayers', level: 100, category: 'GIS' },
+          { name: 'WMS Layers', level: 100, category: 'GIS' },
+          { name: 'KML & Maps', level: 100, category: 'GIS' },
+          { name: 'Highcharts.js', level: 100, category: 'GIS' },
+          // { name: 'jqGrid', level: 100, category: 'GIS' },
         ]
       },
       {
         name: 'DevOps & Tools',
         icon: '⚙️',
         skills: [
-          { name: 'Git & GitHub', level: 88, category: 'DevOps' },
-          { name: 'IIS Server', level: 85, category: 'DevOps' },
-          { name: 'GitHub Copilot', level: 82, category: 'DevOps' },
-          { name: 'Production Support', level: 87, category: 'DevOps' },
+          { name: 'Git & GitHub', level: 100, category: 'DevOps' },
+          { name: 'IIS Server', level: 100, category: 'DevOps' },
+          { name: 'GitHub Copilot', level: 100, category: 'DevOps' },
+          { name: 'Production Support (Deployments)', level: 100, category: 'DevOps' },
         ]
       }
     ];
@@ -95,17 +95,17 @@ export class PortfolioDataService {
       {
         title: 'Project Engineer',
         company: 'CDAC Pune',
-        location: 'Ministry of Communication & Information Technology, Government of India',
+        location: 'Ministry of Electronics and Information Technology, Government of India',
         startDate: 'Nov 2022',
         endDate: 'Present',
         current: true,
         description: 'Leading development of critical modules for PMGSY-OMMAS, a national-level road infrastructure monitoring and accounting system serving multiple state governments across India.',
         modules: [
-          'SNA Sparsh Module',
+          'SNA Sparsh Integration',
           'SBD – GePNIC Integration',
           'EBG – NeSL Integration',
           'Ticketing System',
-          'PVTG Module'
+          'PVTG Integration'
         ],
         responsibilities: [
           'Developed secure, scalable backend modules using .NET Core & ASP.NET MVC for national-level government data',
@@ -119,7 +119,7 @@ export class PortfolioDataService {
           'Conducted production deployments and provided L2/L3 support for critical issues'
         ],
         technologies: [
-          '.NET Core', 'ASP.NET MVC', 'Web API', 'Entity Framework', 'Angular', 'TypeScript',
+          '.NET Core', 'ASP.NET MVC', 'Web API', 'Entity Framework', 'Angular',
           'SQL Server', 'OpenLayers', 'jQuery', 'IIS', 'Git', 'SonarQube'
         ]
       }
@@ -132,26 +132,26 @@ export class PortfolioDataService {
         id: 'pmgsy-ommas',
         title: 'PMGSY – OMMAS',
         subtitle: 'Online Management, Monitoring & Accounting System',
-        description: 'Large-scale national web application for monitoring and accounting of rural road infrastructure under the Pradhan Mantri Gram Sadak Yojana (Prime Minister\'s Rural Roads Programme). The system manages data for thousands of road projects across multiple states.',
+        description: 'Large-scale national web application for monitoring and accounting of rural road infrastructure under the Pradhan Mantri Gram Sadak Yojana (Prime Minister\'s Rural Roads Programme). The system manages data for thousands of road projects across multiple states and UT.',
         features: [
-          'SNA Sparsh Module for financial accounting and fund management',
+          'SNA Sparsh Integration for financial accounting and fund management',
           'GePNIC Integration for secure bidding and procurement processes',
-          'NeSL Integration for e-bidding and tender management',
+          'NeSL Integration for e-bank guarantee management',
           'Multi-level ticketing system for support and issue resolution',
-          'PVTG Module for Particularly Vulnerable Tribal Groups road projects',
+          'PVTG Integration for unconnected habitations',
           'Interactive GIS maps with OpenLayers for road network visualization',
           'Role-based access control for state, district, and block level users',
-          'Automated report generation with SSRS',
+          'Automated report generation with SSRS Reporting Services',
           'Real-time data synchronization across government portals'
         ],
         technologies: [
-          '.NET Core', 'ASP.NET MVC', 'Web API', 'Entity Framework', 'Angular', 'TypeScript',
-          'SQL Server', 'OpenLayers', 'SSRS', 'jQuery', 'AJAX', 'AES/RSA Encryption', 'Digital Signature'
+          '.NET Core', 'ASP.NET MVC', 'Web API', 'Entity Framework', 'Angular',
+          'SQL Server', 'OpenLayers', 'SSRS Reporting Services', 'jQuery', 'AJAX', 'Hybrid Encryption', 'JWT', 'Digital Signature', 'GIT', 'IIS', 'SonarQube','Leaflet.js','KML','WMS Layers','Copilot AI'
         ],
         category: 'Government - National Infrastructure',
         duration: 'Nov 2022 - Present',
         role: 'Full-Stack Developer',
-        impact: 'Serving 20+ state governments, managing crores of rupees in rural road infrastructure funding'
+        impact: 'Serving 30+ state and national government agencies, managing crores of rupees in rural road infrastructure funding'
       },
       {
         id: 'digital-health',
@@ -161,18 +161,18 @@ export class PortfolioDataService {
         features: [
           'Patient registration and profile management',
           'Appointment scheduling with doctor availability',
-          'Electronic Medical Records (EMR) integration',
-          'Prescription management and drug interaction alerts',
-          'Lab reports and diagnostic integration',
+          // 'Electronic Medical Records (EMR) integration',
+          //'Prescription management and drug interaction alerts',
+          // 'Lab reports and diagnostic integration',
           'Secure REST API architecture',
-          'HIPAA-compliant data handling',
+          // 'HIPAA-compliant data handling',
           'Role-based dashboards for patients, doctors, and administrators'
         ],
         technologies: [
-          'ASP.NET MVC', 'Web API', 'Entity Framework', 'Angular', 'SQL Server', 'JWT', 'LINQ'
+          '.NET Core', 'Web API', 'Entity Framework', 'Angular', 'SQL Server', 'JWT', 'LINQ'
         ],
         category: 'Healthcare',
-        duration: '6 months',
+        duration: '8 months',
         role: 'Full-Stack Developer'
       },
       {
@@ -191,7 +191,7 @@ export class PortfolioDataService {
           'Audit trail and reporting'
         ],
         technologies: [
-          'C#', '.NET', 'Blockchain Concepts', 'Cryptography', 'SQL Server', 'Razor Pages'
+          'Java', 'Spring Boot','MySQL','Blockchain Concepts', 'SHA-256'
         ],
         category: 'Academic - Fintech',
         duration: '4 months',
@@ -213,9 +213,9 @@ export class PortfolioDataService {
           'Low stock notifications'
         ],
         technologies: [
-          'ASP.NET MVC', 'Entity Framework', 'SQL Server', 'jQuery', 'HTML5', 'CSS3'
+          'Swing', 'JDBC', 'MySQL', 'Java'
         ],
-        category: 'Retail',
+        category: 'Academic',
         duration: '3 months',
         role: 'Developer'
       },
@@ -234,10 +234,10 @@ export class PortfolioDataService {
           'Simple and intuitive UI for farmers'
         ],
         technologies: [
-          'JavaScript', 'OpenLayers', 'HTML5', 'CSS3', 'Geospatial APIs'
+          'JavaScript', 'jQuery','HTML5', 'CSS3'
         ],
         category: 'Agriculture - GIS',
-        duration: '2 months',
+        duration: '2 days',
         role: 'Frontend Developer'
       }
     ];
@@ -297,7 +297,7 @@ export class PortfolioDataService {
   getTechStack(): string[] {
     return [
       '.NET Core', 'C#', 'ASP.NET MVC', 'Web API', 'Entity Framework', 'LINQ',
-      'Angular', 'TypeScript', 'JavaScript', 'jQuery', 'HTML5', 'CSS3',
+      'Angular',  'JavaScript', 'jQuery', 'HTML5', 'CSS3',
       'SQL Server', 'SSRS', 'Stored Procedures', 'Triggers',
       'OpenLayers', 'Highcharts.js', 'jqGrid',
       'Git', 'GitHub', 'IIS', 'SonarQube',

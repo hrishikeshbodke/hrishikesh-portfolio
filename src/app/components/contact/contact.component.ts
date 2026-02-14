@@ -61,7 +61,7 @@ import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/anima
 
               <div class="availability">
                 <div class="status-indicator"></div>
-                <p>Available for freelance projects and consulting</p>
+                <p>Ready for the next big opportunity to elevate my career</p>
               </div>
             </div>
           </div>
