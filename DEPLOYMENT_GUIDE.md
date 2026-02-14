@@ -26,7 +26,7 @@ ng build --configuration production --base-href /portfolio/
 
 ### 4. Deploy to GitHub Pages
 ```bash
-npx angular-cli-ghpages --dir=dist/protfolio-v1.0/browser
+npx angular-cli-ghpages --dir=dist/protfolioV1.0/browser
 ```
 
 ### 5. Enable GitHub Pages
@@ -55,8 +55,8 @@ git commit -m "Update portfolio"
 git push origin main
 
 # 4. Rebuild and redeploy
-ng build --configuration production --base-href /portfolio/
-npx angular-cli-ghpages --dir=dist/protfolio-v1.0/browser
+ng build --configuration production --base-href /hrishikesh-portfolio/
+npx angular-cli-ghpages --dir=dist/protfolioV1.0/browser
 ```
 
 ---
