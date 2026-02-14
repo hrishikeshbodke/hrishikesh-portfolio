@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortfolioDataService } from '../../core/services/portfolio-data.service';
+import { EmailService } from '../../core/services/email.service';
 import { Profile, ContactForm } from '../../core/models/profile.model';
 import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/animations';
 
@@ -116,7 +117,7 @@ import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/anima
                   [(ngModel)]="formData.message"
                   required
                   rows="6"
-                  placeholder="Tell me about your project or inquiry..."
+                  placeholder="Tell me about you or inquiry..."
                   class="form-control"
                 ></textarea>
               </div>
@@ -129,12 +130,19 @@ import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/anima
                 <span *ngIf="isSubmitting">Sending...</span>
               </button>
 
+              <!-- Success message when email is sent successfully -->
               <div class="form-message success" *ngIf="submitSuccess">
                 ✓ Message sent successfully! I'll get back to you soon.
               </div>
 
-              <div class="form-message info">
-                Note: This is a demo form. In production, this would be connected to a backend API.
+              <!-- Error message if email sending fails -->
+              <div class="form-message error" *ngIf="submitError">
+                ✗ {{ errorMessage }}
+              </div>
+
+              <!-- Warning if EmailJS is not configured properly -->
+              <div class="form-message warning" *ngIf="!isEmailConfigured">
+                ⚠️ Email service not configured. Please update credentials in email.service.ts
               </div>
             </form>
           </div>
@@ -356,6 +364,18 @@ import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/anima
       border: 1px solid #10b981;
     }
 
+    .form-message.error {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .form-message.warning {
+      background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
     .form-message.info {
       background: rgba(59, 130, 246, 0.1);
       color: #60a5fa;
@@ -387,9 +407,15 @@ import { fadeInUp, slideInLeft, slideInRight } from '../../core/animations/anima
 })
 export class ContactComponent implements OnInit {
   profile!: Profile;
-  isSubmitting = false;
-  submitSuccess = false;
   
+  // Form state management flags
+  isSubmitting = false;        // Shows loading state while sending email
+  submitSuccess = false;       // Shows success message when email is sent
+  submitError = false;         // Shows error message if sending fails
+  errorMessage = '';           // Detailed error message to display
+  isEmailConfigured = false;   // Checks if EmailJS is properly configured
+  
+  // Form data model - bound to the template with ngModel
   formData: ContactForm = {
     name: '',
     email: '',
@@ -397,31 +423,134 @@ export class ContactComponent implements OnInit {
     message: ''
   };
 
-  constructor(private portfolioData: PortfolioDataService) {}
+  /**
+   * Constructor - Inject required services
+   * @param portfolioData - Service to get profile information
+   * @param emailService - Service to handle email sending via EmailJS
+   */
+  constructor(
+    private portfolioData: PortfolioDataService,
+    private emailService: EmailService
+  ) {}
 
+  /**
+   * Component initialization
+   * Runs when the component is first loaded
+   */
   ngOnInit(): void {
+    // Get profile data from the service
     this.profile = this.portfolioData.getProfile();
+    
+    // Check if EmailJS is properly configured
+    this.isEmailConfigured = this.emailService.isConfigured();
+    
+    // Log configuration status for debugging
+    if (!this.isEmailConfigured) {
+      console.warn('⚠️ EmailJS not configured. Please update credentials in email.service.ts');
+      console.log('Configuration status:', this.emailService.getConfigStatus());
+    }
   }
 
-  submitForm(): void {
+  /**
+   * Handle form submission
+   * Sends email using EmailJS service
+   */
+  async submitForm(): Promise<void> {
+    // Check if EmailJS is configured before attempting to send
+    if (!this.isEmailConfigured) {
+      this.submitError = true;
+      this.errorMessage = 'Email service is not configured. Please contact the administrator.';
+      return;
+    }
+
+    // Reset previous states
+    this.submitSuccess = false;
+    this.submitError = false;
     this.isSubmitting = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', this.formData);
-      this.isSubmitting = false;
+
+    try {
+      // Prepare template parameters for EmailJS
+      // Combine all form data into a formatted message body
+      const formattedMessage = `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📧 NEW CONTACT FORM SUBMISSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 SENDER INFORMATION:
+───────────────────────────────────────
+Name:    ${this.formData.name}
+Email:   ${this.formData.email}
+Subject: ${this.formData.subject}
+
+💬 MESSAGE:
+───────────────────────────────────────
+${this.formData.message}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 Received: ${new Date().toLocaleString()}
+🌐 Source: Portfolio Contact Form
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      `.trim();
+
+      // Template parameters for EmailJS
+      const templateParams = {
+        from_name: this.formData.name,      // Sender's name
+        from_email: this.formData.email,    // Sender's email (will be used as Reply-To)
+        subject: this.formData.subject,     // Email subject
+        message: formattedMessage,          // Formatted message with all details
+        to_name: this.profile.name,         // Your name (recipient)
+        to_email: this.profile.email,       // Your email (recipient)
+        reply_to: this.formData.email       // Explicitly set reply-to address
+      };
+
+      console.log('📧 Sending email with data:', templateParams);
+
+      // Send email using EmailJS service
+      await this.emailService.sendEmail(templateParams);
+
+      // Email sent successfully!
+      console.log('✓ Email sent successfully');
       this.submitSuccess = true;
-      
-      // Reset form after 3 seconds
+      this.isSubmitting = false;
+
+      // Reset the form after 3 seconds
       setTimeout(() => {
         this.submitSuccess = false;
-        this.formData = {
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        };
+        this.resetForm();
       }, 3000);
-    }, 1500);
+
+    } catch (error: any) {
+      // Email sending failed
+      console.error('✗ Failed to send email:', error);
+      this.isSubmitting = false;
+      this.submitError = true;
+
+      // Set user-friendly error message
+      if (error.text) {
+        this.errorMessage = `Failed to send email: ${error.text}`;
+      } else if (error.message) {
+        this.errorMessage = error.message;
+      } else {
+        this.errorMessage = 'Failed to send email. Please try again or contact me directly.';
+      }
+
+      // Hide error message after 5 seconds
+      setTimeout(() => {
+        this.submitError = false;
+      }, 5000);
+    }
+  }
+
+  /**
+   * Reset form data to initial state
+   * Called after successful submission
+   */
+  private resetForm(): void {
+    this.formData = {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    };
   }
 }

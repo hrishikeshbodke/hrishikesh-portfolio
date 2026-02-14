@@ -1,3 +1,44 @@
+<!-- Welcome Popup Modal -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-modal" (click)="$event.stopPropagation()">
+    <!-- Close button -->
+    <button class="popup-close" (click)="closePopup()" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Icon -->
+    <div class="popup-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <h2 class="popup-title">📧 Let's Connect!</h2>
+    <p class="popup-message">
+      Please use the <strong>email functionality</strong> available in the 
+      <strong>Get In Touch</strong> section below to contact me.
+    </p>
+    <p class="popup-submessage">
+      Fill out the form and I'll get back to you as soon as possible!
+    </p>
+
+    <!-- Buttons -->
+    <div class="popup-actions">
+      <button class="popup-btn primary" (click)="goToContact()">
+        Go to Contact Section
+      </button>
+      <button class="popup-btn secondary" (click)="closePopup()">
+        Got it!
+      </button>
+    </div>
+  </div>
+</div>
+
 <app-header></app-header>
 <main>
   <app-hero></app-hero>
