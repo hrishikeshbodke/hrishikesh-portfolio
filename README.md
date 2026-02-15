@@ -278,7 +278,7 @@ This project is created for professional portfolio purposes.
 ## 👤 Contact
 
 **Hrishikesh Bodke**
-- Email: hrishikesh.bodke@cdac.in
+- Email: hrishikeshbodkeb@gmail.in
 - LinkedIn: [Connect on LinkedIn](https://linkedin.com/in/hrishikesh-bodke)
 - GitHub: [View Profile](https://github.com/hrishikeshbodke)
 

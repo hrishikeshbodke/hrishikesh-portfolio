@@ -185,7 +185,7 @@ npm run build --configuration production
 - ✅ Experience: 3.4 Years
 - ✅ Organization: CDAC Pune
 - ✅ Ministry: Communication & Information Technology, Government of India
-- ✅ Email: hrishikesh.bodke@cdac.in
+- ✅ Email: hrishikeshbodkeb@gmail.in
 
 ### **Education:**
 - ✅ PG-DAC from CDAC/KnowIT Pune (2022) - 77.4%
@@ -271,7 +271,7 @@ Git, GitHub, IIS, SonarQube, Production Support
 ## 📧 Contact Information
 
 **Developer:** Hrishikesh Bodke  
-**Email:** hrishikesh.bodke@cdac.in  
+**Email:** hrishikeshbodkeb@gmail.in
 **LinkedIn:** [Connect](https://linkedin.com/in/hrishikesh-bodke)  
 **GitHub:** [Profile](https://github.com/hrishikeshbodke)
 

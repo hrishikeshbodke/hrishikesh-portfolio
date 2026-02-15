@@ -446,7 +446,7 @@ Features:
 - Slide-in animations
 
 Contact Information:
-- Email: hrishikesh.bodke@cdac.in
+- Email: hrishikeshbodkeb@gmail.in
 - Organization: CDAC Pune
 - LinkedIn: Profile link
 - GitHub: Profile link
@@ -1170,7 +1170,7 @@ CONTACT INFORMATION
 ================================================================================
 
 Developer: Hrishikesh Bodke
-Email: hrishikesh.bodke@cdac.in
+Email: hrishikeshbodkeb@gmail.in
 LinkedIn: https://linkedin.com/in/hrishikesh-bodke
 GitHub: https://github.com/hrishikeshbodke
 Portfolio: https://hrishikeshbodke.github.io/hrishikesh-portfolio/
