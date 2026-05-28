@@ -64,9 +64,9 @@ import { PortfolioDataService } from '../../core/services/portfolio-data.service
           <p class="copyright">
             © {{ currentYear }} Hrishikesh Bodke. Built with Angular.
           </p>
-          <p class="attribution">
+          <!-- <p class="attribution">
             Designed & Developed with ❤️ for Enterprise Excellence
-          </p>
+          </p> -->
         </div>
       </div>
     </footer>

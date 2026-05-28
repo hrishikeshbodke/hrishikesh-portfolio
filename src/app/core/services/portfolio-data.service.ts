@@ -6,11 +6,32 @@ import { Profile, SkillCategory, Experience, Project, Education, Certification }
 })
 export class PortfolioDataService {
 
+  private calculateExperienceSince(startDate: Date): string {
+    const today = new Date();
+    let years = today.getFullYear() - startDate.getFullYear();
+    let months = today.getMonth() - startDate.getMonth();
+
+    if (today.getDate() < startDate.getDate()) {
+      months -= 1;
+    }
+
+    if (months < 0) {
+      years -= 1;
+      months += 12;
+    }
+
+    if (years < 0) {
+      return '0.0+ Years';
+    }
+
+    return `${years}.${months}+ Years`;
+  }
+
   getProfile(): Profile {
     return {
       name: 'Hrishikesh Bodke',
       title: '.NET + Angular Full-Stack Developer',
-      experience: '3.4+ Years',
+      experience: this.calculateExperienceSince(new Date('2022-11-01')),
       currentRole: 'Project Engineer',
       organization: 'CDAC Pune',
       location: 'Ministry of Electronics and Information Technology, Government of India',
